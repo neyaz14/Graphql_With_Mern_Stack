@@ -6,5 +6,5 @@ const ClientSchem = new mongoose.Schema({
     phone: String
 })
 
-const clientModel = new mongoose.model('Client', ClientSchem)
-module.exports = clientModel
+
+module.exports = new mongoose.model('Client', ClientSchem)
