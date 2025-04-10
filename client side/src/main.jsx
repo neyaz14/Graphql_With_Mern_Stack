@@ -4,13 +4,22 @@ import './index.css'
 import AppRoutes from './Router/AppRoutes.jsx'
 import AuthProvider from './Providers/AuthProviders.jsx'
 
+import client from './apolloClient.js'
+import { ApolloProvider } from '@apollo/client'
+
+
 createRoot(document.getElementById('root')).render(
 
 
+
+
     <StrictMode>
-        <AuthProvider>
-            <AppRoutes></AppRoutes>
-        </AuthProvider>
+        <ApolloProvider client={client}>
+
+            <AuthProvider>
+                <AppRoutes></AppRoutes>
+            </AuthProvider>
+        </ApolloProvider>
     </StrictMode>
     ,
 )
