@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import AuthContext from './AuthContext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import auth from '../firebase/firebase.config';
-import axios from 'axios';
-import useAxiosPublic from '../hooks/useAxiosPublic';
+// import axios from 'axios';
+// import useAxiosPublic from '../hooks/useAxiosPublic';
 
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const axiosPublic = useAxiosPublic();
+    // const axiosPublic = useAxiosPublic();
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -36,33 +36,33 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-
+            setLoading(false);
             console.log('state captured', currentUser?.email);
             // setLoading(false);
 
-            if (currentUser?.email) {
-                const user = { email: currentUser.email };
+            // if (currentUser?.email) {
+            //     const user = { email: currentUser.email };
 
-                axiosPublic.post('/jwt', user,
-                    { withCredentials: true }
+            //     axiosPublic.post('/jwt', user,
+            //         { withCredentials: true }
 
-                )
-                    .then(res => {
-                        console.log('login token', res);
-                        setLoading(false);
-                    })
+            //     )
+            //         .then(res => {
+            //             console.log('login token', res);
+            //             setLoading(false);
+            //         })
 
-            }
-            else {
+            // }
+            // else {
 
-                axiosPublic.post('/logout',{},  {
-                    withCredentials: true
-                })
-                .then(res => {
-                    console.log('logout', res.data);
-                    setLoading(false);
-                })
-            }
+            //     axiosPublic.post('/logout',{},  {
+            //         withCredentials: true
+            //     })
+            //     .then(res => {
+            //         console.log('logout', res.data);
+            //         setLoading(false);
+            //     })
+            // }
 
         })
 

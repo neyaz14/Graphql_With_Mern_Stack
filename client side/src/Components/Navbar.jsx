@@ -20,12 +20,7 @@ const Navbar = () => {
     const links = <>
         <li className='opacity-95 '><NavLink to="/">Home</NavLink></li>
         <li className='opacity-95 '><NavLink to="/allProducts">All Products</NavLink></li>
-        <li className='opacity-95 '><NavLink to="/competitorPrice">Competitor Price</NavLink></li>
-        <li className='opacity-95 '><NavLink to="/inventoryTracking">Inventory Tracking</NavLink></li>
-        <li className='opacity-95 '><NavLink to="/pricingManagement">Pricing Management</NavLink></li>
-        <li className='opacity-95 '><NavLink to="/reportAnalysis">Report Analysis</NavLink></li>
-        <li className='opacity-95 '><NavLink to="/orderManage">Order Management</NavLink></li>
-        <li className='opacity-95 '><NavLink to="/supplierManage">Supplier Management</NavLink></li>
+       
     </>
     return (
         <div className="navbar bg-base-100">
